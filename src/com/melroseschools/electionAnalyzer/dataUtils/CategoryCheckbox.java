@@ -7,10 +7,17 @@ public class CategoryCheckbox extends Checkbox {
 	public String category;
 	public String name;
 	
+	public CategoryCheckbox(String category, String name, boolean displayName) {
+		super(name + " " + category);
+		this.category = category;
+		this.name = name;
+	}
+	
 	public CategoryCheckbox(String category, String name) {
 		super(name);
 		this.category = category;
 		this.name = name;
 	}
+	
 	
 }

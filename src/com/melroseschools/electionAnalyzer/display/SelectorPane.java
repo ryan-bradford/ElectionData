@@ -1,6 +1,7 @@
 package com.melroseschools.electionAnalyzer.display;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +11,6 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextPane;
 
 import com.melroseschools.electionAnalyzer.dataUtils.CategoryCheckbox;
 import com.melroseschools.electionAnalyzer.dataUtils.IndividualResult;
@@ -20,16 +20,19 @@ import com.melroseschools.electionAnalyzer.display.checkboxPanes.QuestionFour;
 import com.melroseschools.electionAnalyzer.display.checkboxPanes.QuestionOne;
 import com.melroseschools.electionAnalyzer.display.checkboxPanes.QuestionThree;
 import com.melroseschools.electionAnalyzer.display.checkboxPanes.QuestionTwo;
+import com.melroseschools.electionAnalyzer.display.checkboxPanes.Voting;
 import com.melroseschools.electionAnalyzer.electionItems.BallotItems;
 
 public class SelectorPane extends JPanel {
 
-	ArrayList<CategoryCheckbox> checkboxes;
+	ArrayList<CategoryCheckbox> preCheckboxes;
+	ArrayList<CategoryCheckbox> postCheckboxes;
 	public ArrayList<IndividualResult> allResults;
 	public Scanner readFile;
 
 	public SelectorPane() {
-		checkboxes = new ArrayList<CategoryCheckbox>();
+		preCheckboxes = new ArrayList<CategoryCheckbox>();
+		postCheckboxes = new ArrayList<CategoryCheckbox>();
 		submitButton();
 		try {
 			initPersonInfo();
@@ -47,50 +50,84 @@ public class SelectorPane extends JPanel {
 		initQuestionTwo();
 		initQuestionThree();
 		initQuestionFour();
+		initVotingInfo();
 	}
 	
+	public void initPersonalIDInfo() {
+		PersonalInfo personal = new PersonalInfo(preCheckboxes);
+		personal.setBounds(50, 0, 100, 800);
+		personal.setVisible(true);
+		this.add(personal);
+	}
+
+	
 	public void initPartyInfo() {
-		Party party = new Party(checkboxes);
-		party.setBounds(150, 50, 100, 400);
+		Party party = new Party(preCheckboxes);
+		party.setBounds(150, 0, 100, 400);
 		party.setVisible(true);
 		this.add(party);
 	}
 	
 	public void initQuestionOne() {
-		QuestionOne qOne = new QuestionOne(checkboxes);
-		qOne.setBounds(250, 20, 100, 400);
-		qOne.setVisible(true);
-		this.add(qOne);
+		QuestionOne qPreOne = new QuestionOne(preCheckboxes);
+		qPreOne.setBounds(250, 20, 100, 400);
+		qPreOne.setVisible(true);
+		this.add(qPreOne);
+		
+		QuestionOne qPostOne = new QuestionOne(postCheckboxes);
+		qPostOne.setBounds(450, 420, 100, 400);
+		qPostOne.setVisible(true);
+		this.add(qPostOne);
 	}
 	
 	public void initQuestionTwo() {
-		QuestionTwo qTwo = new QuestionTwo(checkboxes);
+		QuestionTwo qTwo = new QuestionTwo(preCheckboxes);
 		qTwo.setBounds(350, 20, 100, 400);
 		qTwo.setVisible(true);
 		this.add(qTwo);
+		
+		QuestionTwo qPostTwo = new QuestionTwo(postCheckboxes);
+		qPostTwo.setBounds(550, 420, 100, 400);
+		qPostTwo.setVisible(true);
+		this.add(qPostTwo);
 	}
 	
 	public void initQuestionThree() {
-		QuestionThree qThree = new QuestionThree(checkboxes);
+		QuestionThree qThree = new QuestionThree(preCheckboxes);
 		qThree.setBounds(450, 20, 100, 400);
 		qThree.setVisible(true);
 		this.add(qThree);
+		
+		QuestionThree qPostThree = new QuestionThree(postCheckboxes);
+		qPostThree.setBounds(650, 420, 100, 400);
+		qPostThree.setVisible(true);
+		this.add(qPostThree);
 	}
 	
 	public void initQuestionFour() {
-		QuestionFour qFour = new QuestionFour(checkboxes);
+		QuestionFour qFour = new QuestionFour(preCheckboxes);
 		qFour.setBounds(550, 20, 100, 400);
 		qFour.setVisible(true);
 		this.add(qFour);
+		
+		QuestionFour qPostFour = new QuestionFour(postCheckboxes);
+		qPostFour.setBounds(750, 420, 100, 400);
+		qPostFour.setVisible(true);
+		this.add(qPostFour);
 	}
-
-	public void initPersonalIDInfo() {
-		PersonalInfo personal = new PersonalInfo(checkboxes);
-		personal.setBounds(50, 50, 100, 400);
-		personal.setVisible(true);
-		this.add(personal);
+	
+	public void initVotingInfo() {
+		Voting preVote = new Voting(preCheckboxes);
+		preVote.setBounds(650, 0, 100, 400);
+		preVote.setVisible(true);
+		this.add(preVote);
+		
+		Voting postVote = new Voting(postCheckboxes);
+		postVote.setBounds(850, 400, 100, 400);
+		postVote.setVisible(true);
+		this.add(postVote);
 	}
-
+	
 	public void submitButton() {
 		JButton submit = new JButton("Analyze");
 		submit.setBounds(200, 400, 200, 50);
@@ -99,18 +136,27 @@ public class SelectorPane extends JPanel {
 		this.add(submit);
 	}
 
+
 	public class submit implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			String postCat = "";
+			String postID = "";
+			for(int i = 0; i < postCheckboxes.size(); i++) {
+				if(postCheckboxes.get(i).getState()) {
+					postCat = postCheckboxes.get(i).category;
+					postID = postCheckboxes.get(i).name;
+				}
+			}
 			double clintonVotes = 0;
 			double totalVotes = 0;
 			for (int i = 1; i < allResults.size(); i++) {
 				boolean toUse = true;
-				for(CategoryCheckbox x: checkboxes) {
+				for(CategoryCheckbox x: preCheckboxes) {
 					if(x.getState() && !allResults.get(i).allFilters.get(x.category).equals(x.name)) {
 						toUse = false;
 						if(!toUse) {
-						for(CategoryCheckbox y: checkboxes) {
+						for(CategoryCheckbox y: preCheckboxes) {
 							if(y.getState() && allResults.get(i).allFilters.get(x.category).contains(y.name)) {
 								toUse = true;
 							}
@@ -118,14 +164,19 @@ public class SelectorPane extends JPanel {
 						}
 					}
 				}
-				if(toUse) {
+				if(postCat.equals("")) {
 					totalVotes++;
-					if(allResults.get(i).allFilters.get(BallotItems.cand).contains("Hillary Clinton")) {
+					if(toUse) {
+						clintonVotes++;
+					}
+				} else if(toUse) {
+					totalVotes++;
+					if(allResults.get(i).allFilters.get(postCat).contains(postID)) {
 						clintonVotes++;
 					}
 				}
 			}
-			JOptionPane.showMessageDialog(null, "This demographic voted for Clinton at a rate of " + Math.round(10000.0 * clintonVotes / (totalVotes)) / 100.0 + "%");
+			JOptionPane.showMessageDialog(null, "This demographic voted " + postID + " on " + postCat + " at a rate of " + Math.round(10000.0 * clintonVotes / (totalVotes)) / 100.0 + "%");
 		}
 	}
 	
@@ -133,7 +184,11 @@ public class SelectorPane extends JPanel {
 		allResults = new ArrayList<IndividualResult>();
 		readFile = new Scanner(new File("election.csv"));
 		while (readFile.hasNext()) {
-			String person = readFile.nextLine();
+			String[] parts = readFile.nextLine().split(new String("\""));
+			String person = "";
+			for(int i = 0; i < parts.length; i += 2) {
+				person+= parts[i];
+			}
 			String[] personInfo = person.split(",");
 			if (personInfo.length > 1) {
 				IndividualResult currentResult = new IndividualResult();

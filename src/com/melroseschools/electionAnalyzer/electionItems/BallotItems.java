@@ -6,7 +6,8 @@ public class BallotItems {
 	public static String gender = "Gender";
 	public static String grade = "Grade";
 	public static String registeredToVote = "Registration"; //0 = Not old, 1 = No, 2 = Yes
-	
+	public static String votedLastTime = "Voted Last Time"; //0 = Not old, 1 = No, 2 = Yes
+
 	public static String cand = "Candatite";
 	public static String hillaryOrTrump = "Clinton or Trump"; //True is clinton, False is trump, Null is other
 	public static String party = "Party";

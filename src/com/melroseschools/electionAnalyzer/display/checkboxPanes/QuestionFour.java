@@ -10,27 +10,35 @@ import com.melroseschools.electionAnalyzer.electionItems.BallotItems;
 
 public class QuestionFour extends JPanel {
 
+	int y = 0;
+	int offset = 30;
+	int width = 100;
+	
 	public QuestionFour(ArrayList<CategoryCheckbox> checkboxes) {
 		this.setLayout(null);
 		JTextPane questionFour = new JTextPane();
 		questionFour.setText("Question Four");
-		questionFour.setBounds(0, 0, 100, 30);
+		questionFour.setBounds(0, 0, width, 30);
 		questionFour.setEditable(false);
 		this.add(questionFour);
+		y += offset;
 		CategoryCheckbox yes = new CategoryCheckbox(BallotItems.questionFour, "Yes");
-		yes.setBounds(0, 30, 90, 40);
+		yes.setBounds(0, y, width, 40);
 		this.add(yes);
 		checkboxes.add(yes);
+		y += offset;
 		CategoryCheckbox no = new CategoryCheckbox(BallotItems.questionFour, "No");
-		no.setBounds(0, 80, 90, 40);
+		no.setBounds(0, y, width, 40);
 		this.add(no);
 		checkboxes.add(no);
+		y += offset;
 		CategoryCheckbox dontKnow = new CategoryCheckbox(BallotItems.questionFour, "Do Not Know Enough");
-		dontKnow.setBounds(0, 130, 90, 40);
+		dontKnow.setBounds(0, y, width, 40);
 		this.add(dontKnow);
 		checkboxes.add(dontKnow);
+		y += offset;
 		CategoryCheckbox abstain = new CategoryCheckbox(BallotItems.questionFour, "Abstain (Non-Vote)");
-		abstain.setBounds(0, 180, 90, 40);
+		abstain.setBounds(0, y, width, 40);
 		this.add(abstain);
 		checkboxes.add(abstain);
 	}
