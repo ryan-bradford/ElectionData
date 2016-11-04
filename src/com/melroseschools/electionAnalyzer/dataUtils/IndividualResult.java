@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.melroseschools.electionAnalyzer.electionItems.BallotItems;
+import com.melroseschools.electionAnalyzer.electionItems.BallotOrder;
 
 public class IndividualResult {
 	
@@ -18,10 +19,6 @@ public class IndividualResult {
 	public String cand;
 	public String hillaryOrTrump; 
 	public String party;
-	public String cFav;
-	public String dFav;
-	public String jFav;
-	public String sFav;
 	
 	public String questionOne;
 	public String questionTwo; 
@@ -42,9 +39,9 @@ public class IndividualResult {
 	}
 		
 	public void initPerson(String[] personInfo) {
-		personalInformation(personInfo[2], personInfo[3], personInfo[1], personInfo[4], personInfo[5], personInfo[20]);
-		candPrefernece(personInfo[6], personInfo[11], personInfo[7], personInfo[8], personInfo[9], personInfo[10]);
-		ballotInfo(personInfo[12], personInfo[13], personInfo[14], personInfo[15]);
+		personalInformation(personInfo[BallotOrder.gender], personInfo[BallotOrder.classLevel], personInfo[BallotOrder.grade], personInfo[BallotOrder.registeredToVote], personInfo[BallotOrder.party], personInfo[BallotOrder.votedLastTime]);
+		candPrefernece(personInfo[BallotOrder.cand], personInfo[BallotOrder.hillaryOrTrump]);
+		ballotInfo(personInfo[BallotOrder.questionOne], personInfo[BallotOrder.questionTwo], personInfo[BallotOrder.questionThree], personInfo[BallotOrder.questionFour]);
 	}
 	
 	public void ballotInfo(String qOne, String qTwo, String qThree, String qFour) {
@@ -74,21 +71,12 @@ public class IndividualResult {
 		allFilters.put(BallotItems.party, this.party);
 	}
 	
-	public void candPrefernece(String candatite, String hillaryOrTrump, String clintonFav, String trumpFav, String johnsonFav, String steinFav) {
+	public void candPrefernece(String candatite, String hillaryOrTrump) {
 		this.cand = candatite;
 		this.hillaryOrTrump = hillaryOrTrump;
-		
-		cFav = clintonFav;
-		dFav = trumpFav;
-		jFav = johnsonFav;
-		sFav = steinFav;
-		
+		System.out.println(this.cand);
 		allFilters.put(BallotItems.cand, this.cand);
 		allFilters.put(BallotItems.hillaryOrTrump, this.hillaryOrTrump);
-		allFilters.put(BallotItems.cFav, this.cFav);
-		allFilters.put(BallotItems.dFav, this.dFav);
-		allFilters.put(BallotItems.jFav, this.jFav);
-		allFilters.put(BallotItems.sFav, this.sFav);
 	}
 	
 }

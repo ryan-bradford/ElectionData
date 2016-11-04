@@ -16,7 +16,7 @@ import com.ryanb3.SelfUpdatingJava.Update;
 
 public class Test {
 
-	static String currentIndex = "1.04";
+	static String currentIndex = "1.06";
 	
 	public static void main(String[] args) {
 		try {

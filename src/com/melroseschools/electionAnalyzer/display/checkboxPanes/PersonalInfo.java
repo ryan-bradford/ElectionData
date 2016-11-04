@@ -32,27 +32,27 @@ public class PersonalInfo extends JPanel {
 	
 	public void initAge() {
 		y += offset;
-		CategoryCheckbox freshman = new CategoryCheckbox(BallotItems.grade, "Freshman");
+		CategoryCheckbox freshman = new CategoryCheckbox(BallotItems.grade, "9");
 		freshman.setBounds(0, y, width, 40);
 		this.add(freshman);
 		checkboxes.add(freshman);
 		y += offset;
-		CategoryCheckbox sophomore = new CategoryCheckbox(BallotItems.grade, "Sophomore");
+		CategoryCheckbox sophomore = new CategoryCheckbox(BallotItems.grade, "10");
 		sophomore.setBounds(0, y, width, 40);
 		this.add(sophomore);
 		checkboxes.add(sophomore);
 		y += offset;
-		CategoryCheckbox junior = new CategoryCheckbox(BallotItems.grade, "Junior");
+		CategoryCheckbox junior = new CategoryCheckbox(BallotItems.grade, "11");
 		junior.setBounds(0, y, width, 40);
 		this.add(junior);
 		checkboxes.add(junior);
 		y += offset;
-		CategoryCheckbox senior = new CategoryCheckbox(BallotItems.grade, "Senior");
+		CategoryCheckbox senior = new CategoryCheckbox(BallotItems.grade, "12");
 		senior.setBounds(0, y, width, 40);
 		this.add(senior);
 		checkboxes.add(senior);
 		y += offset;
-		CategoryCheckbox staff = new CategoryCheckbox(BallotItems.grade, "Staff");
+		CategoryCheckbox staff = new CategoryCheckbox(BallotItems.grade, "Teacher");
 		staff.setBounds(0, y, width, 40);
 		this.add(staff);
 		checkboxes.add(staff);
@@ -60,7 +60,7 @@ public class PersonalInfo extends JPanel {
 	
 	public void initClassLevel() {
 		y += offset;
-		CategoryCheckbox CP = new CategoryCheckbox(BallotItems.classLevel, "College Prep");
+		CategoryCheckbox CP = new CategoryCheckbox(BallotItems.classLevel, "College Prepatory");
 		CP.setBounds(0, y, width, 40);
 		this.add(CP);
 		checkboxes.add(CP);
@@ -70,7 +70,7 @@ public class PersonalInfo extends JPanel {
 		this.add(honors);
 		checkboxes.add(honors);
 		y += offset;
-		CategoryCheckbox AP = new CategoryCheckbox(BallotItems.classLevel, "AP");
+		CategoryCheckbox AP = new CategoryCheckbox(BallotItems.classLevel, "Advanced Placement");
 		AP.setBounds(0, y, width, 40);
 		this.add(AP);
 		checkboxes.add(AP);
