@@ -32,15 +32,10 @@ public class QuestionThree extends JPanel {
 		this.add(no);
 		checkboxes.add(no);
 		y += offset;
-		CategoryCheckbox dontKnow = new CategoryCheckbox(BallotItems.questionThree, "Do Not Know Enough");
+		CategoryCheckbox dontKnow = new CategoryCheckbox(BallotItems.questionThree, "Unanswered");
 		dontKnow.setBounds(0, y, width, 40);
 		this.add(dontKnow);
 		checkboxes.add(dontKnow);
-		y += offset;
-		CategoryCheckbox abstain = new CategoryCheckbox(BallotItems.questionThree, "Abstain (Non-Vote)");
-		abstain.setBounds(0, y, width, 40);
-		this.add(abstain);
-		checkboxes.add(abstain);	
 	}
 	
 }

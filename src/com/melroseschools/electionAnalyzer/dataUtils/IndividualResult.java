@@ -74,7 +74,7 @@ public class IndividualResult {
 	public void candPrefernece(String candatite, String hillaryOrTrump) {
 		this.cand = candatite;
 		this.hillaryOrTrump = hillaryOrTrump;
-		System.out.println(this.cand);
+
 		allFilters.put(BallotItems.cand, this.cand);
 		allFilters.put(BallotItems.hillaryOrTrump, this.hillaryOrTrump);
 	}

@@ -1,6 +1,5 @@
 package com.melroseschools.electionAnalyzer;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,7 +15,7 @@ import com.ryanb3.SelfUpdatingJava.Update;
 
 public class Test {
 
-	static String currentIndex = "1.06";
+	static String currentIndex = "1.07";
 	
 	public static void main(String[] args) {
 		try {

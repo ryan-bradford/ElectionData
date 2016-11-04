@@ -31,12 +31,12 @@ public class Party extends JPanel {
 		republicanParty.setBounds(0, y, width, 40);
 		this.add(republicanParty);
 		checkboxes.add(republicanParty);
-		CategoryCheckbox libratarianParty = new CategoryCheckbox(BallotItems.party, "Libertarian");
+		CategoryCheckbox libratarianParty = new CategoryCheckbox(BallotItems.party, "Independant");
 		y += offset;
 		libratarianParty.setBounds(0, y, width, 40);
 		this.add(libratarianParty);
 		checkboxes.add(libratarianParty);
-		CategoryCheckbox greenParty = new CategoryCheckbox(BallotItems.party, "Green");
+		CategoryCheckbox greenParty = new CategoryCheckbox(BallotItems.party, "Other");
 		y += offset;
 		greenParty.setBounds(0, y, width, 40);
 		this.add(greenParty);

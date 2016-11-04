@@ -2,6 +2,7 @@ package com.melroseschools.electionAnalyzer.display;
 
 import java.awt.event.ActionEvent;
 
+
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,7 +22,6 @@ import com.melroseschools.electionAnalyzer.display.checkboxPanes.QuestionOne;
 import com.melroseschools.electionAnalyzer.display.checkboxPanes.QuestionThree;
 import com.melroseschools.electionAnalyzer.display.checkboxPanes.QuestionTwo;
 import com.melroseschools.electionAnalyzer.display.checkboxPanes.Voting;
-import com.melroseschools.electionAnalyzer.electionItems.BallotItems;
 
 public class SelectorPane extends JPanel {
 
@@ -176,7 +176,11 @@ public class SelectorPane extends JPanel {
 					}
 				}
 			}
-			JOptionPane.showMessageDialog(null, "This demographic voted " + postID + " on " + postCat + " at a rate of " + Math.round(10000.0 * clintonVotes / (totalVotes)) / 100.0 + "%");
+			if(postCat.equals("")) { 
+				JOptionPane.showMessageDialog(null, "This demographic is " + Math.round(10000.0 * clintonVotes / (totalVotes)) / 100.0 + "% of the voting population");
+			} else {
+				JOptionPane.showMessageDialog(null, "This demographic voted " + postID + " on " + postCat + " at a rate of " + Math.round(10000.0 * clintonVotes / (totalVotes)) / 100.0 + "%");
+			}	
 		}
 	}
 	
