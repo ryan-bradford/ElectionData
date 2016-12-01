@@ -21,7 +21,7 @@ public class Party extends JPanel {
 		party.setBounds(0, y, width, 30);
 		party.setEditable(false);
 		this.add(party);
-		CategoryCheckbox democraticParty = new CategoryCheckbox(BallotItems.party, "Democratic");
+		CategoryCheckbox democraticParty = new CategoryCheckbox(BallotItems.party, "Democrat");
 		y += offset;
 		democraticParty.setBounds(0, y, width, 40);
 		this.add(democraticParty);

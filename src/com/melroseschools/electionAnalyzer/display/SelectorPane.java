@@ -21,6 +21,7 @@ import com.melroseschools.electionAnalyzer.display.checkboxPanes.QuestionFour;
 import com.melroseschools.electionAnalyzer.display.checkboxPanes.QuestionOne;
 import com.melroseschools.electionAnalyzer.display.checkboxPanes.QuestionThree;
 import com.melroseschools.electionAnalyzer.display.checkboxPanes.QuestionTwo;
+import com.melroseschools.electionAnalyzer.display.checkboxPanes.SchoolInitative;
 import com.melroseschools.electionAnalyzer.display.checkboxPanes.Voting;
 
 public class SelectorPane extends JPanel {
@@ -51,6 +52,7 @@ public class SelectorPane extends JPanel {
 		initQuestionThree();
 		initQuestionFour();
 		initVotingInfo();
+		initSchoolInitative();
 	}
 	
 	public void initPersonalIDInfo() {
@@ -116,9 +118,21 @@ public class SelectorPane extends JPanel {
 		this.add(qPostFour);
 	}
 	
+	public void initSchoolInitative() {
+		SchoolInitative sInit = new SchoolInitative(preCheckboxes);
+		sInit.setBounds(650, 20, 100, 400);
+		sInit.setVisible(true);
+		this.add(sInit);
+		
+		SchoolInitative sPostInit = new SchoolInitative(postCheckboxes);
+		sPostInit.setBounds(950, 420, 100, 400);
+		sPostInit.setVisible(true);
+		this.add(sPostInit);
+	}
+	 
 	public void initVotingInfo() {
 		Voting preVote = new Voting(preCheckboxes);
-		preVote.setBounds(650, 0, 100, 400);
+		preVote.setBounds(750, 0, 100, 400);
 		preVote.setVisible(true);
 		this.add(preVote);
 		

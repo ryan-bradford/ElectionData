@@ -24,6 +24,7 @@ public class IndividualResult {
 	public String questionTwo; 
 	public String questionThree; 
 	public String questionFour; 
+	public String schoolInit; 
 	
 	public String socialIssues;
 	public String economicIssues;
@@ -41,18 +42,20 @@ public class IndividualResult {
 	public void initPerson(String[] personInfo) {
 		personalInformation(personInfo[BallotOrder.gender], personInfo[BallotOrder.classLevel], personInfo[BallotOrder.grade], personInfo[BallotOrder.registeredToVote], personInfo[BallotOrder.party], personInfo[BallotOrder.votedLastTime]);
 		candPrefernece(personInfo[BallotOrder.cand], personInfo[BallotOrder.hillaryOrTrump]);
-		ballotInfo(personInfo[BallotOrder.questionOne], personInfo[BallotOrder.questionTwo], personInfo[BallotOrder.questionThree], personInfo[BallotOrder.questionFour]);
+		ballotInfo(personInfo[BallotOrder.questionOne], personInfo[BallotOrder.questionTwo], personInfo[BallotOrder.questionThree], personInfo[BallotOrder.questionFour], personInfo[BallotOrder.schoolInitative]);
 	}
 	
-	public void ballotInfo(String qOne, String qTwo, String qThree, String qFour) {
+	public void ballotInfo(String qOne, String qTwo, String qThree, String qFour, String schoolInit) {
 		questionOne = qOne;
 		questionTwo = qTwo;
 		questionThree = qThree;
 		questionFour = qFour;
+		this.schoolInit = schoolInit;
 		allFilters.put(BallotItems.questionOne, questionOne);
 		allFilters.put(BallotItems.questionTwo, questionTwo);
 		allFilters.put(BallotItems.questionThree, questionThree);
 		allFilters.put(BallotItems.questionFour, questionFour);
+		allFilters.put(BallotItems.schoolInitative, schoolInit);
 
 	}
 	

@@ -88,10 +88,10 @@ public class PersonalInfo extends JPanel {
 		this.add(notReg);
 		checkboxes.add(notReg);
 		y += offset;
-		CategoryCheckbox notOld = new CategoryCheckbox(BallotItems.registeredToVote, "Not old enough", true);
-		notOld.setBounds(0, y, width, 40);
-		this.add(notOld);
-		checkboxes.add(notOld);
+		CategoryCheckbox unan = new CategoryCheckbox(BallotItems.registeredToVote, "Unanswered", true);
+		unan.setBounds(0, y, width, 40);
+		this.add(unan);
+		checkboxes.add(unan);
 	}
 	
 	public void initGender() {
